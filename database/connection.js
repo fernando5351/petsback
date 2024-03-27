@@ -1,5 +1,4 @@
-const { Sequelize } = require('sequelize');
-const { database, isProduction, isTest, isDevelopment } = require('../config');
+const { database, isProduction, isTest } = require('../config');
 
 let URL = '';
 let developmentDB = `postgres://${database.user}:${database.password}@${database.host}:${database.port}/${database.name}`;

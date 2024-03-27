@@ -1,10 +1,10 @@
 const validateSchema = require('../../middleware/validatorHandler');
-const RoleController = require('../controllers/role.controller');
-const { create, update } = require('../schemas/role.schema');
+const RolePermissionController = require('../controllers/rolePermission.controller');
+const { create, update } = require('../schemas/rolePermission.schema');
 const { params, query } = require('../schemas/validator');
 const router = require('express').Router();
 
-const service = new RoleController;
+const service = new RolePermissionController;
 
 router.post( '/',
     validateSchema(create, 'body'),

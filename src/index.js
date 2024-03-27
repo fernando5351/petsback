@@ -44,6 +44,7 @@ wsServer.on("request", (request) =>{
 });
 
 routesHandler(app);
+require('./auth');
 
 app.use(isBoomError);
 

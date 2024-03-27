@@ -8,7 +8,10 @@ const create = joi.object({
     status
 });
 
-const  update = Object.assign({}, create, {});
+const  update = joi.object({
+    name,
+    status
+});
 
 module.exports = {
     create,
