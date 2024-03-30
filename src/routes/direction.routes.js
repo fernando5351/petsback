@@ -55,7 +55,7 @@ router.get('/:id',
 
 router.patch('/:id',
     validateSchema(getDirection, 'params'),
-    validateSchema(updateDirection, 'body'),
+     validateSchema(updateDirection, 'body'),
     async (req, res, next) => {
         try {
             const direction = await service.update(req.params.id, req.body);
@@ -71,7 +71,7 @@ router.patch('/:id',
 );
 
 router.delete('/:id',
-    validateSchema(deleteDirection, 'params'),
+    // validateSchema(deleteDirection, 'params'),
     async (req, res, next) => {
         try {
             const { id } = req.params;

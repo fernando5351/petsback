@@ -19,7 +19,13 @@ const createDirection = joi.object({
     reference: reference,
 })
 
-const  updateDirection = Object.assign({}, createDirection, {});
+const  updateDirection = joi.object({
+    description: description,
+    street: street,
+    colonia: colonia,
+    home: home,
+    reference: reference,
+})
 
 const getDirection = joi.object({
     id: id.required()
