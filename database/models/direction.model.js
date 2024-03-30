@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 
 const DIRECTIONS_TABLE = 'Directions';
 
@@ -42,7 +42,8 @@ const DirectionsModel = {
 
 class Directions extends Model {
     static associate(models) {
-        this.belongsTo(models.Owner, { foreignKey: 'directionId', as: 'User' });
+        // this.hasOne(models.Owner, { foreignKey: 'directionId', as: 'Owner' });
+        // this.hasOne(models.Pet, { foreignKey: 'directionId', as: 'Pet' });
     }
 
     static config(sequelize) {

@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const { OWNERS_TABLE } = require('./owner.model');
 const { SPECIES_TABLE } = require('./specie.model');
+const { DIRECTIONS_TABLE } = require('./direction.model');
 
 const PETS_TABLE = 'Pets';
 
@@ -32,6 +33,17 @@ const PetsModel = {
     age: {
         type: DataTypes.INTEGER,
         allowNull: true
+    },
+    directionId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        field: 'direction_id',
+        references: {
+            model: DIRECTIONS_TABLE,
+            key: 'id'
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'NO ACTION'
     },
     ownerId: {
         type: DataTypes.INTEGER,
@@ -67,7 +79,7 @@ class Pets extends Model {
     static associate(models) {
         this.belongsTo(models.Owner, { foreignKey: 'ownerId', as: 'Owner' });
         this.belongsTo(models.Specie, { foreignKey: 'specieId', as: 'Specie' });
-        this.belongsTo(models.Actions, { foreignKey: 'petId', as: 'Action' });
+        this.belongsTo(models.Direction, { foreignKey: 'directionId', as: 'Direction' });
     }
 
     static config(sequelize) {

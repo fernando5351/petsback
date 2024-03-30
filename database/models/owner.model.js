@@ -57,9 +57,8 @@ const OwnersModel = {
 
 class Owners extends Model {
     static associate(models) {
-        this.hasMany(models.Directions, { foreignKey: 'directionId', as: 'Directions' });
+        this.belongsTo(models.Direction, { foreignKey: 'directionId', as: 'Direction' });
         this.hasMany(models.Pet, { foreignKey: 'ownerId', as: 'Pets' });
-        this.hasMany(models.Owners, { foreignKey: 'ownerId', as: 'Action' });
     }
 
     static config(sequelize) {
