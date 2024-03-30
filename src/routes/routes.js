@@ -7,6 +7,7 @@ const userRouter = require('./user.routes.js');
 const authRouter = require('./auth.routes.js');
 
 function routesHandler(app) {
+    //fix bug
     app.use('/api/v1', skipAuthentication, router);
     router.use('/role/permissions', rolePermissionRouter);
     router.use('/role', roleRouter);
