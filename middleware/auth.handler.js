@@ -16,7 +16,7 @@ function skipAuthentication(req, res, next) {
         }
 
         Ican(req, res, next);
-        next();
+        return
     });
 }
 

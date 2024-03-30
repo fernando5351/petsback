@@ -7,6 +7,7 @@ async function Ican(req, res, next) {
     try {
         let path = req.path;
         path = path.split('/');
+        console.log(path);
 
         const method = req.method;
         const payload = req.user;
@@ -18,6 +19,7 @@ async function Ican(req, res, next) {
             const element = role.Permissions[i];
 
             if (path[2] === 'permissions') {
+                console.log('estoy en if');
                 path[1] = 'permissions';
             }
 

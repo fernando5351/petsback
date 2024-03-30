@@ -6,7 +6,7 @@ const router = require('express').Router();
 
 const service = new UserController;
 
-router.post( '/',
+router.post( '/register',
     validateSchema(create, 'body'),
     async (req, res, next) => {
         try {
