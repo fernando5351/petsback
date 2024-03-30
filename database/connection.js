@@ -1,10 +1,9 @@
-const { Sequelize } = require('sequelize');
-const { database, isProduction, isTest, isDevelopment } = require('../config');
+const { database, isProduction, isTest } = require('../config');
 
 let URL = '';
 let developmentDB = `postgres://${database.user}:${database.password}@${database.host}:${database.port}/${database.name}`;
 URL = isProduction ? database.URI: ( isTest? database.URI_TEST: developmentDB);
-
+console.log(URL);
 module.exports = {
     development: {
         dialect: 'postgres',
@@ -15,7 +14,10 @@ module.exports = {
         url: URL,
         ssl: true,
         dialectOptions: {
-            ssl: { require: true }
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
         }
     },
     test: {
@@ -23,7 +25,10 @@ module.exports = {
         url: URL,
         ssl: true,
         dialectOptions: {
-            ssl: { require: true }
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
         }
     }
 };

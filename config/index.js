@@ -17,9 +17,9 @@ const config = {
         mail: process.env.EMAIL_USER,
         password: process.env.EMAIL_PASSWORD
     },
-    jwt: {
-        secrete: process.env.JWT_SECRET,
-        recovery: process.env.JWT_RECOVERY_PASSWORD
+    Jwt: {
+        secret: process.env.JWT_SECRET,
+        recoverySecret: process.env.JWT_RECOVERY_PASSWORD
     }
 }
 

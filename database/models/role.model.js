@@ -33,10 +33,14 @@ const RoleModel = {
 
 class Role extends Model {
     static associate(models) {
-        // this.belongsTo(models.User, { 
-        //     foreignKey: 'roleId',
-        //     as: 'Users'
-        // });
+        this.hasMany(models.RolePermission, { 
+            foreignKey: 'role_id',
+            as: 'Permissions'
+        });
+        this.hasMany(models.User, { 
+            foreignKey: 'roleId',
+            as: 'Users'
+        });
     }
 
     static config(sequelize) {

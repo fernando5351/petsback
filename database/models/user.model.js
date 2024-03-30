@@ -15,18 +15,31 @@ const UsersModel = {
     },
     email: {
         type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastname: {
+        type: DataTypes.STRING,
         allowNull: false
     },
     roleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'role_id',
         references: {
             model: ROLE_TABLE,
             key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
+    },
+    status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false
     },
     createdAt: {
         type: DataTypes.DATE,

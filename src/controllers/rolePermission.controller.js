@@ -2,16 +2,16 @@ const sequelize = require('../../sequelize');
 const { models } = require('../../sequelize');
 const boom = require('@hapi/boom');
 
-class RoleController {
-    async create(role){
+class RolePermissionController {
+    async create(data){
         let transaction;
         try {
             transaction = await sequelize.transaction();
-            const newRole = await models.Role.create(role, {
+            const newRolePermission = await models.RolePermission.create(data, {
                 transaction: transaction
             });
             await transaction.commit();
-            return newRole;
+            return newRolePermission;
         } catch (error) {
             if (transaction) await transaction.rollback();
             if (error.errors && error.errors.length > 0) {
@@ -25,7 +25,7 @@ class RoleController {
 
     async getAll(sort, order, limit, offset) {
         const option = {
-            include: ['Permissions']
+            include: ['Role']
         };
     
         if (sort) {
@@ -39,36 +39,38 @@ class RoleController {
     
         console.log(option);
     
-        const roles = await models.Role.findAll(option);
+        const rolePermissions = await models.RolePermission.findAll(option);
     
-        if (roles.length < 1) {
+        if (rolePermissions.length < 1) {
             throw boom.badRequest('Resources not found');
         }
     
-        return roles;
+        return rolePermissions;
     }
 
     async getById(id) {
-        const role = await models.Role.findByPk(id);
-        if (!role) {
+        const rolePermissions = await models.RolePermission.findByPk(id, {
+            include: ['Role']
+        });
+        if (!rolePermissions) {
             throw boom.notFound("Resource doesn't exist");
         }
-        return role;
+        return rolePermissions;
     }
 
     async update(id, data){
         let transaction;
         try {
             transaction = await sequelize.transaction();
-            let role = await this.getById(id);
-            const roleUpdated = await role.update(data, {
+            let rolePermission = await this.getById(id);
+            const rolePermissionUpdated = await rolePermission.update(data, {
                 transaction: transaction
             });
             transaction.commit();
-            return roleUpdated;
+            return rolePermissionUpdated;
         } catch (error) {
             if (transaction) await transaction.rollback();
-            return error;
+            return ;
         }
     }
 
@@ -76,18 +78,18 @@ class RoleController {
         let transaction;
         try {
             transaction = await sequelize.transaction();
-            let role = await this.getById(id);
-            const roleDeleted = await role.destroy({
+            let rolePermission = await this.getById(id);
+            const rolePermissionDeleted = await rolePermission.destroy({
                 transaction: transaction
             });
             transaction.commit();
-            return roleDeleted;
+            return rolePermissionDeleted;
         } catch (error) {
             if (transaction) await transaction.rollback();
-            return error;
+            throw boom.badRequest(error);
         }
     }
     
 }
 
-module.exports = RoleController;
+module.exports = RolePermissionController;

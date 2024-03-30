@@ -14,8 +14,11 @@ let options = {
 if (isProduction || isTest) {
     options.ssl = true;
     options.dialectOptions = {
-        ssl: { require: true }
-    };
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
 }
 
 const  sequelize = new Sequelize(URL, options);
