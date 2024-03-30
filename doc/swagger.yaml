@@ -42,6 +42,33 @@ paths:
       tags:
         - Roles
       summary: Obtiene todos los roles
+      parameters:
+        - in: query
+          name: sort
+          required:  false
+          description: Campo por el cual se ordenara
+          schema:
+            type: string
+        - in: query
+          name: order
+          required: false
+          description: Orden de los resultados (asc o desc)
+          schema:
+            type: string
+        - in: query
+          name: limit
+          required: false
+          description: limite de recursos a solicitar
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: offset
+          required: false
+          description: numero de elementos omisos para comenzar la consulta
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: Roles obtenidos exitosamente
@@ -244,8 +271,62 @@ paths:
         '202':
           description: Usuario eliminado exitosamente
 
+  /api/v1/auth/login:
+    post:
+      tags:
+        - Autenticación
+      summary: Inicia sesión en el sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      responses:
+        '200':
+          description: Usuario actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Authenticacion'
+
 components:
   schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        roleId:
+          type: integer
+        status:
+          type: boolean
+    UserCreate:
+      type: object
+      properties:
+        name:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+        roleId:
+          type: integer
+        status:
+          type: boolean
+      required: [ "email", "password" ]
     RoleCreate:
       type: object
       properties:
@@ -299,3 +380,22 @@ components:
           type: boolean
         canDelete:
           type: boolean
+    AuthRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    Authenticacion:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        data:
+          type: object
+          $ref: '#/components/schemas/User'
+        token:
+          type: string
