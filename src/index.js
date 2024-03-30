@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const routesHandler = require('./routes/routes');
@@ -24,7 +23,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 function originIsAllowed(origin) {
-    if(origin=== "http://localhost:3000"){
+    if(origin === "http://localhost:3000"){
         return true;
     }
     return false;
