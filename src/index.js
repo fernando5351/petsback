@@ -6,10 +6,9 @@ const app = express();
 const server = require('http').Server(app);
 const WebSocketServer = require('websocket').server;
 const port = process.env.PORT || 3000;
-const swaggerUI = require('swagger-ui-express');
-const path = require('path');
 const fs = require('fs');
 const yaml = require('js-yaml');
+const swaggerUI = require('swagger-ui-express')
 
 // Creamos el servidor de sockets y lo incorporamos al servidor de la aplicación
 const wsServer= new WebSocketServer({
@@ -46,7 +45,6 @@ wsServer.on("request", (request) =>{
     });
 });
 
-//swagger documentation
 const yamlFilePath = path.join(__dirname, '../doc/swagger.yaml');
 let yamlObject;
 try {
@@ -55,8 +53,7 @@ try {
 } catch (error) {
     console.error('Error al leer el archivo YAML:', error);
 }
-app.use('/swagger', swaggerUI.serve, swaggerUI.setup(yamlObject));
-
+app.use('/doc/swagger', swaggerUI.serve, swaggerUI.setup(yamlObject));
 
 routesHandler(app);
 require('./auth');

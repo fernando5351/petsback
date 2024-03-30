@@ -16,9 +16,7 @@ router.post('/login',
             res.status(200).json({
                 status: "success",
                 message:"User logged in successfully!",
-                data:{
-                    user
-                },
+                data: user,
                 token
             })
         } catch (error) {
