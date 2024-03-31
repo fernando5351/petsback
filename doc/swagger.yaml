@@ -20,6 +20,9 @@ tags:
   - name: Autenticación
     description: Endpoints relacionados con la autenticación
 
+security:
+  - bearerAuth: []
+  
 paths:
   /api/v1/role:
     post:
@@ -293,6 +296,12 @@ paths:
                 $ref: '#/components/schemas/Authenticacion'
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     User:
       type: object
