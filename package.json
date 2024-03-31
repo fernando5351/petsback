@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "start": "node app.js",
     "dev": "nodemon app.js",
     "create-db": "sequelize-cli db:create pets",

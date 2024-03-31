@@ -2,7 +2,7 @@ const { Model, DataTypes, Sequelize } = require('sequelize');
 const { ROLE_TABLE } = require('./role.model');
 
 const USERS_TABLE = 'users';
-
+// model
 const UsersModel = {
     id: {
         type: DataTypes.INTEGER,

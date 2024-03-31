@@ -1,5 +1,5 @@
 
-
+//boom
 function isBoomError(err, req, res, next) {
     if (err.isBoom) {
         const { output } = err;

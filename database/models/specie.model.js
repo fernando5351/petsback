@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 const SPECIES_TABLE = 'Species';
-
+// model
 const SpeciesModel = {
     id: {
         type: DataTypes.INTEGER,

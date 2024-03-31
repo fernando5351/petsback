@@ -1,7 +1,7 @@
 const joi = require('joi');
 
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/;
-//acepta caracteres @, $, !, %, *, ? y &.
+//acepta @, $, !, %, *, ? y &.
 
 const password = joi.string()
   .regex(passwordPattern)

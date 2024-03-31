@@ -11,7 +11,7 @@ services:
       - 5432:5432
     volumes:
       - ~/postgres_data:/var/lib/postgresql/data
-
+  # servicio de  la aplicación en contenedor Docker
   pgadmin:
     image: dpage/pgadmin4
     environment:

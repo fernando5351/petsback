@@ -7,7 +7,7 @@ function modelsHandler(sequelize) {
     RolePermissions.init(RolePermissionModel, RolePermissions.config(sequelize));
     User.init(UsersModel, User.config(sequelize));
 
-    //associations
+    //associations models
     Role.associate(sequelize.models);
     RolePermissions.associate(sequelize.models);
     User.associate(sequelize.models);

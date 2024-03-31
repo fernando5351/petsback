@@ -11,7 +11,6 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 const swaggerUI = require('swagger-ui-express')
 
-// Creamos el servidor de sockets y lo incorporamos al servidor de la aplicación
 const wsServer= new WebSocketServer({
     httpServer: server,
     autoAcceptConnections: false

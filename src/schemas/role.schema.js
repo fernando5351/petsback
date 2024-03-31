@@ -8,6 +8,7 @@ const create = joi.object({
     status
 });
 
+// An id is required when you are updating an existing
 const  update = joi.object({
     name,
     status

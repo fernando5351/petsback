@@ -37,8 +37,6 @@ class RoleController {
         option.limit = limit || 50;
         option.offset = offset || 0;
     
-        console.log(option);
-    
         const roles = await models.Role.findAll(option);
     
         if (roles.length < 1) {

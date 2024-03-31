@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 const { DIRECTIONS_TABLE } = require('./direction.model');
 
 const OWNERS_TABLE = 'Owners';
-
+// model
 const OwnersModel = {
     id: {
         type: DataTypes.INTEGER,

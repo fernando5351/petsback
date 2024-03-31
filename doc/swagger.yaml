@@ -10,7 +10,7 @@ servers:
 
 tags:
   - name: Roles
-    description: Endpoints relacionados con los roles
+    description: Endpoints de funcionamiento de roles
   - name: Permisos
     description: Endpoints relacionados con los permisos
   - name: Usuarios

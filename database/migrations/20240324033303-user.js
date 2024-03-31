@@ -6,6 +6,7 @@ const { USERS_TABLE, UsersModel } = require('../models/user.model');
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable(USERS_TABLE, UsersModel);
+    //insert user
     await queryInterface.bulkInsert(USERS_TABLE, [{
       password: '$2b$10$d3El6b/CIOYSeYM1Qgg/SuzqaFxoGA38MjSYzrmDalF9DKtijiO.q', //Papaya@123
       email: 'isaacfernandofernandez5351@gmail.com',

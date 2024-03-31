@@ -5,6 +5,7 @@ const { OWNERS_TABLE } = require('./owner.model');
 
 const ACTIONS_TABLE = 'Actions';
 
+//action model
 const ActionsModel = {
     id: {
         type: DataTypes.INTEGER,

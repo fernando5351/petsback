@@ -3,6 +3,7 @@ const { models } = require('../../sequelize');
 const boom = require('@hapi/boom');
 const bcrypt = require('bcrypt');
 
+// user controller
 class UserController {
     async create(data){
         let transaction;

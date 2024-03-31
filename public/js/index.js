@@ -6,7 +6,7 @@ function enviarTexto(event){event.preventDefault();
     // Vaciamos el campocampo.value="";
 }
 
-// La función init se ejecuta cuando termina de cargarse la página
+// La función init se ejecuta cuando termina de cargarse la páginas
 function init() {
     // Conexión con el servidor de websocket
     wsConnect();

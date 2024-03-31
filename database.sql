@@ -6,7 +6,7 @@ CREATE TABLE Roles (
     updatedAt TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Tabla de Permisos por Rol
+-- Tabla de Permisos para Rol
 CREATE TABLE Role_Permissions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     role_id INT,

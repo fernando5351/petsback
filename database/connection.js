@@ -3,7 +3,7 @@ const { database, isProduction, isTest } = require('../config');
 let URL = '';
 let developmentDB = `postgres://${database.user}:${database.password}@${database.host}:${database.port}/${database.name}`;
 URL = isProduction ? database.URI: ( isTest? database.URI_TEST: developmentDB);
-console.log(URL);
+
 module.exports = {
     development: {
         dialect: 'postgres',

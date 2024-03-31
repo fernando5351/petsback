@@ -3,7 +3,7 @@ const { OWNERS_TABLE } = require('./owner.model');
 const { SPECIES_TABLE } = require('./specie.model');
 
 const PETS_TABLE = 'Pets';
-
+// model
 const PetsModel = {
     id: {
         type: DataTypes.INTEGER,

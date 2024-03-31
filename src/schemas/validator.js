@@ -3,12 +3,10 @@ const joi = require('joi');
 const id = joi.number().integer();
 
 module.exports = {
-    // The `params` object is used to validate URL parameters.
     params: joi.object({
         id: id.required()
             .description('The task identifier')
     }),
-    // The `query` object is used to validate query strings.
     query: joi.object().keys({
         sort: joi.string()
             .default('createdAt'),

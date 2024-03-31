@@ -6,6 +6,7 @@ const { ROLE_TABLE, RoleModel } = require('../models/role.model');
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable(ROLE_TABLE, RoleModel);
+    //insert role
     await queryInterface.bulkInsert(ROLE_TABLE, [{
       name: 'admin',
       status: true,

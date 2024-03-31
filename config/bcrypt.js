@@ -6,4 +6,5 @@ async function encript(password) {
     return hash;
 }
 
+//encript password
 encript('Papaya@123');

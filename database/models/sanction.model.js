@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const { Owners, Actions } = require('./owners.model');
 
 const SANCTIONS_TABLE = 'Sanctions';
-
+// model
 const SanctionsModel = {
     id: {
         type: DataTypes.INTEGER,

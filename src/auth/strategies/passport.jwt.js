@@ -5,6 +5,7 @@ const jwt = new Strategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: Jwt.secret
 }, async(payload, done) => {
+    // payload = token
     if (!payload) {
         return done('Unauthorized', false);
     }

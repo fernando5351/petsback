@@ -11,11 +11,11 @@ const localStrategy = new Strategy({
 }, async(email, password, done) => {
     const user = await service.getByEmail(email);
     if(!user){
-        return done(boom.unauthorized('Invalid credentials'), null);
+        return done(boom.unauthorized('Invalid credentials, User or password'), null);
     }
     const isMatch = await bcrypt.compare(password, user.dataValues.password);
     if (!isMatch) {
-        return done(boom.unauthorized('Invalid credentials'), false);
+        return done(boom.unauthorized('Invalid credentials, User or password'), false);
     }  
     delete user.dataValues.password;
     return done(null, user);

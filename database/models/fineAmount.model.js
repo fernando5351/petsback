@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 
 const FINE_AMOUNT_TABLE = 'FineAmount';
-
+// model
 const FineAmountModel = {
     id: {
         type: DataTypes.INTEGER,

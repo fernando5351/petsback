@@ -2,6 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 
 const DIRECTIONS_TABLE = 'Directions';
 
+// model
 const DirectionsModel = {
     id: {
         type: DataTypes.INTEGER,

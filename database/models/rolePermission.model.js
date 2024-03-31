@@ -2,7 +2,7 @@ const { Model, DataTypes, Sequelize } = require('sequelize');
 const { ROLE_TABLE } = require('./role.model');
 
 const ROLE_PERMISSION_TABLE = 'role_permissions'
-
+// model
 const RolePermissionModel = {
     id: {
         type: DataTypes.INTEGER,

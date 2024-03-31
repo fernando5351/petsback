@@ -11,7 +11,6 @@ router.post( '/',
     async (req, res, next) => {
         try {
             const role = await service.create(req.body);
-            console.log(role);
             res.status(201).json({
                 message: 'Role created successfully!',
                 data: role

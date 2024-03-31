@@ -6,6 +6,7 @@ const router = require('express').Router();
 
 const service = new UserController;
 
+//register endpoint
 router.post( '/register',
     validateSchema(create, 'body'),
     async (req, res, next) => {

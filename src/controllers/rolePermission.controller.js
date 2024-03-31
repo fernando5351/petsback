@@ -37,8 +37,6 @@ class RolePermissionController {
         option.limit = limit || 50;
         option.offset = offset || 0;
     
-        console.log(option);
-    
         const rolePermissions = await models.RolePermission.findAll(option);
     
         if (rolePermissions.length < 1) {

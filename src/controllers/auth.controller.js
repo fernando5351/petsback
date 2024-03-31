@@ -23,6 +23,10 @@ class Auth {
         return token;
     }
 
+    async sendMail(user, html){
+
+    }
+
 }
 
 module.exports = Auth

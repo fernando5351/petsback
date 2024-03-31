@@ -19,7 +19,6 @@ async function Ican(req, res, next) {
             const element = role.Permissions[i];
 
             if (path[2] === 'permissions') {
-                console.log('estoy en if');
                 path[1] = 'permissions';
             }
 

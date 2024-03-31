@@ -23,6 +23,13 @@ router.post('/login',
             next(error);
         }
     }
+);
+
+router.post('/recovery',
+    validatorHandler(mail, 'body'),
+    async (req, res, next) => {
+        res.send('hola esto es para recuperar tu cuenta')
+    }
 )
 
 module.exports = router;

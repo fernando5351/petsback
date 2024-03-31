@@ -6,6 +6,7 @@ const { ROLE_PERMISSION_TABLE, RolePermissionModel } = require('../models/rolePe
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable(ROLE_PERMISSION_TABLE, RolePermissionModel);
+    // insert permissions for role admin
     await queryInterface.bulkInsert(ROLE_PERMISSION_TABLE, 
     [ 
       {
