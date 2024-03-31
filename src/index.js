@@ -23,7 +23,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 function originIsAllowed(origin) {
-    if(origin=== "http://localhost:3000"){
+    const whiteList = ['http://localhost:4200']
+    if(whiteList.includes(origin)){
         return true;
     }
     return false;
