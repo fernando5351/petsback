@@ -25,8 +25,7 @@ router.get('/',
     validateSchema(query, 'qery'),
     async (req, res, next) => {
         try {
-            const { sort, order, limit, offset } = req.query;
-            const roles = await service.getAll( sort, order, limit,offset);
+            const roles = await service.getAll();
             res.status(200).json({
                 status: 200,
                 message: "satisfactorily obtained resources",

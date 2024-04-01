@@ -22,7 +22,7 @@ tags:
 
 security:
   - bearerAuth: []
-  
+
 paths:
   /api/v1/role:
     post:
@@ -42,6 +42,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Role'
+        '401':
+          description:  No autorizado
 
     get:
       tags:
@@ -83,6 +85,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Role'
+        '401':
+          description:  No autorizado
 
   /api/v1/role/{id}:
     get:
@@ -104,6 +108,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Role'
+        '401':
+          description:  No autorizado
 
     patch:
       tags:
@@ -130,6 +136,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Role'
+        '401':
+          description:  No autorizado
 
     delete:
       tags:
@@ -146,6 +154,8 @@ paths:
       responses:
         '202':
           description: Rol eliminado exitosamente
+        '401':
+          description:  No autorizado
 
   /api/v1/role/permissions:
     post:
@@ -165,6 +175,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Permission'
+        '401':
+          description:  No autorizado
 
     get:
       tags:
@@ -179,6 +191,57 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Permission'
+        '401':
+          description:  No autorizado
+
+  /api/v1/role/permissions/{id}:
+    patch:
+      tags:
+        - Permisos
+      summary: Editar permisos
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionCreate'
+      responses:
+        '201':
+          description: Permiso creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+        '401':
+          description:  No autorizado
+
+    delete:
+      tags:
+        - Permisos
+      summary: Eliminar permiso
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Permiso creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+        '401':
+          description:  No autorizado
+
+
 
   /api/v1/user/register:
     post:
@@ -198,7 +261,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '401':
+          description:  No autorizado
 
+  /api/v1/user:
     get:
       tags:
         - Usuarios
@@ -212,6 +278,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+        '401':
+          description:  No autorizado
 
   /api/v1/user/{id}:
     get:
@@ -233,6 +301,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '401':
+          description:  No autorizado
 
     patch:
       tags:
@@ -259,6 +329,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        '401':
+          description:  No autorizado
 
     delete:
       tags:

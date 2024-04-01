@@ -23,19 +23,10 @@ class RolePermissionController {
         }
     }
 
-    async getAll(sort, order, limit, offset) {
+    async getAll() {
         const option = {
             include: ['Role']
         };
-    
-        if (sort) {
-            option.order = [[sort, order || 'asc']];
-        } else {
-            option.order = [['createdAt', 'asc']];
-        }
-    
-        option.limit = limit || 50;
-        option.offset = offset || 0;
     
         const rolePermissions = await models.RolePermission.findAll(option);
     
