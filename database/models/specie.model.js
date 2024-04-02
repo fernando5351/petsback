@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes,Sequelize } = require('sequelize');
 
 const SPECIES_TABLE = 'Species';
 
@@ -36,7 +36,7 @@ const SpeciesModel = {
 
 class Species extends Model {
     static associate(models) {
-        this.belongsTo(models.Pet, { foreignKey: 'specieId', as: 'Pets' });
+        this.hasMany(models.Pet, { foreignKey: 'specieId', as: 'Pet' });
     }
 
     static config(sequelize) {
