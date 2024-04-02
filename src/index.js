@@ -2,14 +2,14 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const routesHandler = require('./routes/routes');
-const { isBoomError } = require('../middleware/errorHandler');
+const { boomErrorHandler, logErrors, ormErrorHandler, errorHandler } = require('../middleware/errorHandler');
 const app = express();
 const server = require('http').Server(app);
 const WebSocketServer = require('websocket').server;
 const port = process.env.PORT || 3000;
 const fs = require('fs');
 const yaml = require('js-yaml');
-const swaggerUI = require('swagger-ui-express')
+const swaggerUI = require('swagger-ui-express');
 
 const wsServer= new WebSocketServer({
     httpServer: server,
@@ -59,7 +59,10 @@ app.use('/doc/swagger', swaggerUI.serve, swaggerUI.setup(yamlObject));
 routesHandler(app);
 require('./auth');
 
-app.use(isBoomError);
+app.use(logErrors);
+app.use(ormErrorHandler);
+app.use(boomErrorHandler);
+app.use(errorHandler);
 
 module.exports = {
     server,

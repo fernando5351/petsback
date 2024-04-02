@@ -15,6 +15,11 @@ async function Ican(req, res, next) {
     const user = await service.getById(payload.sub);
     const role = user.Role;
 
+    console.log(role);
+    if (!role.status) {
+      throw boom.unauthorized('Your role is inactive');
+    }
+
     let permissionFound = false;
 
     for (let i = 0; i < role.Permissions.length; i++) {
