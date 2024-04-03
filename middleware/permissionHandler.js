@@ -22,6 +22,7 @@ async function Ican(req, res, next) {
                 path[1] = 'permissions';
             }
 
+            console.log(path[1]);
             switch (element.accessName === path[1]) {
                 case (method === 'GET'):
                     if (!element.canRead) {
