@@ -8,7 +8,17 @@ class Auth {
         const user = await models.User.findOne({
             where: {
                 email
-            }
+            },
+            include: [
+                {
+                    model: models.Role,
+                    as: 'Role',
+                    include: [{
+                        model: models.RolePermission,
+                        as: 'Permissions'
+                    }]
+                }
+            ],
         });
         return user;
     }
