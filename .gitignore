@@ -1,8 +1,23 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,linux,macos,node,visualstudiocode,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,macos,node,visualstudiocode,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos,visualstudiocode,git,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,windows,linux,macos,visualstudiocode,git,dotenv
 
 ### dotenv ###
 .env
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
 
 ### Linux ###
 *~
@@ -236,4 +251,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,linux,macos,node,visualstudiocode,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/node,windows,linux,macos,visualstudiocode,git,dotenv
