@@ -47,7 +47,9 @@ class RoleController {
     }
 
     async getById(id) {
-        const role = await models.Role.findByPk(id);
+        const role = await models.Role.findByPk(id, {
+            include: ['Permissions']
+        });
         if (!role) {
             throw boom.notFound("Resource doesn't exist");
         }

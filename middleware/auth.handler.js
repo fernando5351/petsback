@@ -15,7 +15,6 @@ function skipAuthentication(req, res, next) {
             return next(error);
         }
 
-        console.log(req.user);
         Ican(req, res, next);
         return
     });

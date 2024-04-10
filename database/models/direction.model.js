@@ -44,7 +44,7 @@ const DirectionsModel = {
 class Directions extends Model {
     static associate(models) {
         // this.hasOne(models.Owner, { foreignKey: 'directionId', as: 'Owner' });
-        // this.hasOne(models.Pet, { foreignKey: 'directionId', as: 'Pet' });
+         this.hasOne(models.Pet, { foreignKey: 'directionId', as: 'Pet' });
     }
 
     static config(sequelize) {

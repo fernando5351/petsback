@@ -51,7 +51,14 @@ class RolePermissionController {
         let transaction;
         try {
             transaction = await sequelize.transaction();
-            let rolePermission = await this.getById(id);
+            const rolePermission = await models.RolePermission.findByPk(id, {
+                include: ['Role']
+            });
+            if(!rolePermission){
+                const permissionCreated = await this.create(data, {transaction: transaction});
+                transaction.commit();
+                return permissionCreated;
+            }
             const rolePermissionUpdated = await rolePermission.update(data, {
                 transaction: transaction
             });

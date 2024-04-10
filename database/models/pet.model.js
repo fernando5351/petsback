@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes,Sequelize } = require('sequelize');
 const { OWNERS_TABLE } = require('./owner.model');
 const { SPECIES_TABLE } = require('./specie.model');
 const { DIRECTIONS_TABLE } = require('./direction.model');
