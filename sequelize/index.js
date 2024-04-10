@@ -21,8 +21,6 @@ if (isProduction || isTest) {
     }
 }
 
-console.log(URL);
-
 const  sequelize = new Sequelize(URL, options);
 
 modelsHandler(sequelize);

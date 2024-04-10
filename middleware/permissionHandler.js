@@ -7,7 +7,6 @@ async function Ican(req, res, next) {
   try {
     let path = req.path;
     path = path.split("/");
-    console.log(path);
 
     const method = req.method;
     const payload = req.user;
