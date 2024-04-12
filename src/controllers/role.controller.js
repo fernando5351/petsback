@@ -48,7 +48,7 @@ class RoleController {
     }
 
     async searchByName( name ) {
-        const role = await models.Role.findOne({
+        const role = await models.Role.findAll({
             where:{
                 name: {
                     [Op.iLike]: `%${name}%`
