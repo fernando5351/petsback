@@ -38,6 +38,23 @@ router.get('/',
     }
 );
 
+router.get('/search',
+    validateSchema(query, 'qery'),
+    async (req, res, next) => {
+        try {
+            const { name } = req.query;
+            const roles = await service.searchByName(name);
+            res.status(200).json({
+                status: 200,
+                message: "satisfactorily obtained resources",
+                data: roles
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+);
+
 router.get('/:id', 
     validateSchema(params,'params'),
     async (req,res,next)=> {

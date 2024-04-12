@@ -1,5 +1,6 @@
 const sequelize = require('../../sequelize');
 const { models } = require('../../sequelize');
+const { Op } = require('sequelize');
 const boom = require('@hapi/boom');
 
 class RoleController {
@@ -44,6 +45,20 @@ class RoleController {
         }
     
         return roles;
+    }
+
+    async searchByName( name ) {
+        const role = await models.Role.findOne({
+            where:{
+                name: {
+                    [Op.iLike]: `%${name}%`
+                }
+            }
+        });
+        if (!role) {
+            throw boom.notFound(`The resource ${name} does not exist`);
+        }
+        return role;
     }
 
     async getById(id) {
