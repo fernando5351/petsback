@@ -55,7 +55,7 @@ class RoleController {
                 }
             }
         });
-        if (!role) {
+        if (role.length < 1) {
             throw boom.notFound(`The resource ${name} does not exist`);
         }
         return role;
