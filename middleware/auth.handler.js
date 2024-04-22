@@ -2,7 +2,7 @@ const passport = require("passport");
 const Ican = require('./permissionHandler');
 
 function skipAuthentication(req, res, next) {
-    const exemptedRoutes = ['/auth/login', 'auth/recovery'];
+    const exemptedRoutes = ['/auth/login', '/auth/recovery', '/auth/recovery-password'];
 
     if (exemptedRoutes.includes(req.path)) {
         return next();
@@ -14,7 +14,7 @@ function skipAuthentication(req, res, next) {
         if (error) {
             return next(error);
         }
-
+        
         Ican(req, res, next);
         return
     });

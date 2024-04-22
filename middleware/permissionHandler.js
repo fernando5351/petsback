@@ -12,10 +12,13 @@ async function Ican(req, res, next) {
     const payload = req.user;
 
     const user = await service.getById(payload.sub);
+    if (!user.status) {
+      throw  boom.unauthorized('Usuario locked');
+    }
     const role = user.Role;
 
     if (!role.status) {
-      throw boom.unauthorized('Your role is inactive');
+      throw boom.locked('Your role is inactive');
     }
 
     let permissionFound = false;
@@ -33,41 +36,33 @@ async function Ican(req, res, next) {
         switch (method) {
           case "GET":
             if (!element.canRead) {
-              throw boom.unauthorized(
-                "You do not have authorization to this resource"
-              );
+              throw boom.locked("You do not have authorization to this resource");
             }
             break;
           case "POST":
             if (!element.canCreate) {
-              throw boom.unauthorized(
-                "You do not have authorization to this resource"
-              );
+              throw boom.locked("You do not have authorization to this resource");
             }
             break;
           case "PATCH":
             if (!element.canUpdate) {
-              throw boom.unauthorized(
-                "You do not have authorization to this resource"
-              );
+              throw boom.locked("You do not have authorization to this resource");
             }
             break;
           case "DELETE":
             if (!element.canDelete) {
-              throw boom.unauthorized(
-                "You do not have authorization to this resource"
-              );
+              throw boom.locked("You do not have authorization to this resource");
             }
             break;
           default:
-            throw boom.unauthorized("Unsupported method");
+            throw boom.locked("Unsupported method");
         }
         break;
       }
     }
 
     if (!permissionFound) {
-      throw boom.unauthorized("No permissions found for this resource");
+      throw boom.locked("No permissions found for this resource");
     }
 
     return next();

@@ -1,5 +1,6 @@
 const sequelize = require('../../sequelize');
 const { models } = require('../../sequelize');
+const speakeasy = require('speakeasy');
 const boom = require('@hapi/boom');
 const bcrypt = require('bcrypt');
 
@@ -8,8 +9,13 @@ class UserController {
     async create(data){
         let transaction;
         try {
-            const password = await bcrypt.hash(data.password, 10);
-            const dto = {...data, password};
+            //const password = await bcrypt.hash(data.password, 10);
+            const otp = speakeasy.generateSecret({ length: 20 }).base32;
+            const otpSecret = speakeasy.totp({
+                secret: otp,
+                encoding: 'base32'
+            });
+            const dto = {...data, otpSecret, status: false};
             transaction = await sequelize.transaction();
             let newUser = await models.User.create(dto, {
                 transaction: transaction
@@ -40,7 +46,7 @@ class UserController {
                     }]
                 }
             ],
-            attributes: {  exclude: ['password'] },
+            attributes: {  exclude: ['password', 'otpSecret'] },
         };
     
         if (sort) {
@@ -73,7 +79,7 @@ class UserController {
                         }]
                 }
             ],
-            attributes: { exclude: ['password'] }
+            attributes: { exclude: ['password', 'otpSecret'] }
         });
         if (!user) {
             throw boom.notFound("Resource doesn't exist");
