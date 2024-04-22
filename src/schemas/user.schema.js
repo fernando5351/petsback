@@ -15,7 +15,6 @@ const status = joi.boolean();
 const roleId = joi.number().integer();
 
 const create = joi.object({
-    password,
     email,
     name: name.required(),
     lastname: lastname.required(),

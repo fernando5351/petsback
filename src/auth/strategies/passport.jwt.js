@@ -13,7 +13,7 @@ const jwt = new Strategy({
 });
 
 const recoveryPassword = new Strategy({
-    jwtFromRequest: ExtractJwt.fromUrlQueryParameter('token'),
+    jwtFromRequest: ExtractJwt.fromHeader('x-recovery-authenticate'),
     secretOrKey: Jwt.recoverySecret,
 }, async (payload, done) => {
     done(null, payload)

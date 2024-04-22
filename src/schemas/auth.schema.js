@@ -4,9 +4,11 @@ const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d
 //acepta @, $, !, %, *, ? y &.
 
 const password = joi.string()
-  .min(8)
+  .min(4)
   .message('Debe tener letras mayusculas,minusculas, numeros y caracteres especiales como @, $, !, %, *, ? y &')
   .required();
+const oldPassword = joi.string();
+
 const email = joi.string().email().required();
 
 const login = joi.object({
@@ -15,12 +17,13 @@ const login = joi.object({
 });
 
 const mail = joi.object({
-    email
+    password,
+    oldPassword
 });
 
 const changePassword =  joi.object({
-    oldPassword : password.required(),
-    newPassword : password.regex(passwordPattern),
+    oldPassword,
+    password: password.regex(passwordPattern),
     repeatNewPassword : password.regex(passwordPattern)
 });
 
@@ -28,9 +31,14 @@ const  updatePassword = joi.object({
    password: password.regex(passwordPattern)
 });
 
+const recovery = joi.object({
+    email: email.email()
+})
+
 module.exports = {
     login,
     changePassword,
     mail,
-    updatePassword
+    updatePassword,
+    recovery
 }
