@@ -10,6 +10,7 @@ const port = process.env.PORT || 3000;
 const fs = require('fs');
 const yaml = require('js-yaml');
 const swaggerUI = require('swagger-ui-express');
+const checkStatus = require('../middleware/authorizeStatus');
 
 const wsServer= new WebSocketServer({
     httpServer: server,
@@ -60,8 +61,8 @@ routesHandler(app);
 require('./auth');
 
 app.use(logErrors);
-app.use(ormErrorHandler);
 app.use(boomErrorHandler);
+app.use(ormErrorHandler);
 app.use(errorHandler);
 
 module.exports = {

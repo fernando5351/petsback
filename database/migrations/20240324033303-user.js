@@ -8,11 +8,12 @@ module.exports = {
     await queryInterface.createTable(USERS_TABLE, UsersModel);
     //insert user
     await queryInterface.bulkInsert(USERS_TABLE, [{
-      password: '$2b$10$d3El6b/CIOYSeYM1Qgg/SuzqaFxoGA38MjSYzrmDalF9DKtijiO.q', //Papaya@123
+      password: '$2b$10$w7Y8Ulk9SwVSIogRdqEhUeQoBCNWlyoIjkPHqfiv/lV1LoxVWsrli', //Papaya@123
       email: 'isaacfernandofernandez5351@gmail.com',
       name: 'Isaac Fernando',
       lastname: 'Fernandez Bailon',
       roleId: 1,
+      otpSecret: null,
       status: true,
       createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       updatedAt: Sequelize.literal('CURRENT_TIMESTAMP')

@@ -5,6 +5,7 @@ const config = {
     isProduction: process.env.NODE_ENV === 'production',
     isTest: process.env.NODE_ENV === 'test',
     isDevelopment: process.env.NODE_ENV === 'development',
+    recoveryView: process.env.recoveryView,
     database: {
         name: process.env.DATABASE_NAME,
         port: process.env.DATABASE_PORT,

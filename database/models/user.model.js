@@ -11,7 +11,11 @@ const UsersModel = {
     },
     password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
+    },
+    otpSecret: {
+        type: DataTypes.STRING,
+        allowNull: true
     },
     email: {
         type: DataTypes.STRING,
