@@ -53,6 +53,13 @@ router.get('/:id',
     }
 );
 
+router.get('/search/:name',
+    validateSchema(searchByName, 'params'),
+    async (req, res, next) => {
+        let { name } = req.params;
+    }
+)
+
 router.patch('/:id',
     validateSchema(getPetSchema, 'params'),
     validateSchema(updatePetSchema, 'body'),

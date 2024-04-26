@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const name = Joi.string().required();
 
 const petSchema = Joi.object({
     id: Joi.number().integer(),
@@ -40,6 +41,10 @@ const getPetSchema = Joi.object({
     id: Joi.number().integer().required(),
 });
 
+searchByName = Joi.object({
+    name
+})
+
 // Esquema de validación para eliminar una mascota por ID
 const deletePetSchema = Joi.object({
     id: Joi.number().integer().required(),
@@ -50,4 +55,5 @@ module.exports = {
     updatePetSchema,
     getPetSchema,
     deletePetSchema,
+    searchByName
 };
