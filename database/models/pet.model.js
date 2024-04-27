@@ -34,6 +34,10 @@ const PetsModel = {
         type: DataTypes.INTEGER,
         allowNull: true
     },
+    imgUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
     directionId: {
         type: DataTypes.INTEGER,
         allowNull: false,

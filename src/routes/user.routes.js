@@ -13,6 +13,7 @@ router.post( '/register',
         try {
             const user = await service.create(req.body);
             res.status(201).json({
+                statusCode: 201,
                 message: 'User created successfully!',
                 data: user
             });

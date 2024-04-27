@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { mail } = require('../../../config')
+const boom = require('@hapi/boom');
 
 class  EmailController {
 
