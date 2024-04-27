@@ -37,6 +37,10 @@ const deletePetSchema = Joi.object({
     id: id.required(),
 });
 
+const searchByName = Joi.object({
+    name: name.required()
+})
+
 module.exports = {
     createPetSchema,
     updatePetSchema,
