@@ -1,7 +1,7 @@
 const PetController = require('../controllers/pet.controller');
 const validateSchema = require('../../middleware/validatorHandler');
 const router = require('express').Router();
-const { createPetSchema, getPetSchema, updatePetSchema, deletePetSchema } = require('../schemas/petSchema');
+const { createPetSchema, getPetSchema, updatePetSchema, deletePetSchema, searchByName } = require('../schemas/petSchema');
 
 const service = new PetController();
 
