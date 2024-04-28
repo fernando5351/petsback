@@ -5,12 +5,13 @@ const routesHandler = require('./routes/routes');
 const { boomErrorHandler, logErrors, ormErrorHandler, errorHandler } = require('../middleware/errorHandler');
 const app = express();
 const server = require('http').Server(app);
+const multer = require('multer');
 const WebSocketServer = require('websocket').server;
+const { storage } = require('../config/multer');
 const port = process.env.PORT || 3000;
 const fs = require('fs');
 const yaml = require('js-yaml');
 const swaggerUI = require('swagger-ui-express');
-const checkStatus = require('../middleware/authorizeStatus');
 
 const wsServer= new WebSocketServer({
     httpServer: server,
@@ -21,6 +22,8 @@ app.set('port', port);
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(multer({storage}).single('file'))
 app.use(express.static(path.join(__dirname, "../public")));
 
 function originIsAllowed(origin) {
@@ -59,6 +62,13 @@ app.use('/doc/swagger', swaggerUI.serve, swaggerUI.setup(yamlObject));
 
 routesHandler(app);
 require('./auth');
+app.use('/', async(req, res, next) => {
+    res.status(200).json({
+        statusCode: 200,
+        message: 'Hello World :)',
+        data: 'Pets Works'
+    });
+})
 
 app.use(logErrors);
 app.use(boomErrorHandler);

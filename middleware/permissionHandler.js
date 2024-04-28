@@ -22,6 +22,7 @@ async function Ican(req, res, next) {
     }
 
     let permissionFound = false;
+    let message = "You do not have authorization to this resource";
 
     for (let i = 0; i < role.Permissions.length; i++) {
       const element = role.Permissions[i];
@@ -35,23 +36,34 @@ async function Ican(req, res, next) {
 
         switch (method) {
           case "GET":
+            if (element.onlyMyRecord && !isNaN(path[2]) ) {
+              if (payload.sub !== path[2]) {
+                throw boom.locked(message);
+              }
+              break;
+            }
+          case "GET":
+            if (!element.getById && !isNaN(path[2]) ) {
+              throw boom.locked(message);
+            }
+          case "GET":
             if (!element.canRead) {
-              throw boom.locked("You do not have authorization to this resource");
+              throw boom.locked(message);
             }
             break;
           case "POST":
             if (!element.canCreate) {
-              throw boom.locked("You do not have authorization to this resource");
+              throw boom.locked(message);
             }
             break;
           case "PATCH":
             if (!element.canUpdate) {
-              throw boom.locked("You do not have authorization to this resource");
+              throw boom.locked(message);
             }
             break;
           case "DELETE":
             if (!element.canDelete) {
-              throw boom.locked("You do not have authorization to this resource");
+              throw boom.locked(message);
             }
             break;
           default:
@@ -62,7 +74,7 @@ async function Ican(req, res, next) {
     }
 
     if (!permissionFound) {
-      throw boom.locked("No permissions found for this resource");
+      throw boom.locked(message);
     }
 
     return next();

@@ -22,6 +22,12 @@ const config = {
     Jwt: {
         secret: process.env.JWT_SECRET,
         recoverySecret: process.env.JWT_RECOVERY_PASSWORD
+    },
+    Cloudinary: {
+        cloud: process.env.CLOUDINARY_CLOUD,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_SECRET,
+        url: process.env.CLOUDINARY_URL,
     }
 }
 

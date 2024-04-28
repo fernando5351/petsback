@@ -2,6 +2,7 @@ const { Model, DataTypes,Sequelize } = require('sequelize');
 const { OWNERS_TABLE } = require('./owner.model');
 const { SPECIES_TABLE } = require('./specie.model');
 const { DIRECTIONS_TABLE } = require('./direction.model');
+const { USERS_TABLE } = require('./user.model');
 
 const PETS_TABLE = 'Pets';
 // model
@@ -58,7 +59,7 @@ const PetsModel = {
             key: 'id'
         },
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onDelete: 'RESTRICT'
     },
     status: {
         type: DataTypes.STRING,
@@ -66,6 +67,16 @@ const PetsModel = {
           isIn: [['available', 'adoptable', 'death', 'healthy']],
         },
         defaultValue: 'available'
+    },
+    createdBy: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: USERS_TABLE,
+            key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
     },
     createdAt: {
         type: DataTypes.DATE,

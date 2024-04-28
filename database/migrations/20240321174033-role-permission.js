@@ -6,13 +6,13 @@ const { ROLE_PERMISSION_TABLE, RolePermissionModel } = require('../models/rolePe
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable(ROLE_PERMISSION_TABLE, RolePermissionModel);
-    // insert permissions for role admin
     await queryInterface.bulkInsert(ROLE_PERMISSION_TABLE, 
     [ 
       {
         role_id: 1,
         access_name: 'role',
         can_create: true,
+        get_by_id: true,
         can_read: true,
         can_update: true,
         can_delete: true,
@@ -23,7 +23,9 @@ module.exports = {
         role_id: 1,
         access_name: 'user',
         can_create: true,
+        get_by_id: true,
         can_read: true,
+        only_my_record: true,
         can_update: true,
         can_delete: true,
         createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
@@ -33,6 +35,7 @@ module.exports = {
         role_id: 1,
         access_name: 'permissions',
         can_create: true,
+        get_by_id: true,
         can_read: true,
         can_update: true,
         can_delete: true,

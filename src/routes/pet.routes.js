@@ -2,6 +2,7 @@ const PetController = require('../controllers/pet.controller');
 const validateSchema = require('../../middleware/validatorHandler');
 const router = require('express').Router();
 const { createPetSchema, getPetSchema, updatePetSchema, deletePetSchema, searchByName } = require('../schemas/petSchema');
+const { uploadImage } = require('../controllers/photos.controller');
 
 const service = new PetController();
 
@@ -9,7 +10,10 @@ router.post('/',
     validateSchema(createPetSchema, 'body'),
     async (req, res, next) => {
         try {
-            const pet = await service.create(req.body);
+            console.log(req.file);
+            const imageData = req.file;
+            const imgUrl = await uploadImage(imageData.path, imageData.filename);
+            const pet = await service.create({ ...req.body, imgUrl });
             res.status(201).json({
                 statusCode: 201,
                 message: 'Pet created successfully!',

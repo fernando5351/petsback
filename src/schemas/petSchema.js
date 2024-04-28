@@ -16,7 +16,8 @@ const createPetSchema = Joi.object({
     age: age.required(),
     directionId: directionId.required(),
     ownerId: ownerId,
-    status: status
+    status: status,
+    "file": "file"
 });
 
 const updatePetSchema = Joi.object({

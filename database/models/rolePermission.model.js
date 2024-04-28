@@ -30,6 +30,16 @@ const RolePermissionModel = {
         defaultValue: false,
         field: 'can_create'
     },
+    getById: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        field: 'get_by_id'
+    },
+    onlyMyRecord: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        field: 'only_my_record'
+    },
     canRead: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
