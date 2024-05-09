@@ -1,7 +1,7 @@
 const joi = require('joi');
 
 const roleId = joi.number().integer().min(1);
-const accessName = joi.string().valid('role', 'user', 'permissions', 'direction', 'owner', 'specie', 'pet');
+const accessName = joi.string().valid('role', 'user', 'permissions', 'direction', 'owner', 'specie', 'pet', 'department', 'district');
 const canCreate = joi.boolean().default(false);
 const canRead = joi.boolean().default(true);
 const canUpdate = joi.boolean().default(false);
